@@ -1,7 +1,11 @@
 // require mongo to use mongoose
 var mongoose = require( 'mongoose' );
 // creating mongoose connection
+// dbURI = 'mongodb://jordan:bagend@ds013901.mlab.com:13901/heroku_2kq2gpz2';
 var dbURI = 'mongodb://localhost/Loc8r';
+if (process.env.NODE_ENV === 'production') {
+    dbURI = process.env.MONGOLAB_URI;
+}
 mongoose.connect(dbURI);
 
 // Emulate disconnection events on Windows
