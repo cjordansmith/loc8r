@@ -4,9 +4,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-require('./app_server/models/db');
+// Point the model to the correct place
+require('./app_api/models/db');
 
+// tells application where to look for routes folders
 var routes = require('./app_server/routes/index');
+var routesApi = require('./app_api/routes/index');
 // var users = require('./app_server/routes/users');
 
 var app = express();
@@ -23,7 +26,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// tells application when to use the routes
 app.use('/', routes);
+app.use('/api', routesApi);
 // app.use('/users', users);
 
 // catch 404 and forward to error handler
