@@ -13,7 +13,7 @@ block content
       .row.list-group
         each location in locations
           .col-xs-12.list-group-item
-            h4
+            h4 
               a(href="/location")= location.name
               small &nbsp;
                 +outputRating(location.rating)
@@ -22,6 +22,6 @@ block content
             p
               each facility in location.facilities
                 span.label.label-warning= facility
-                &nbsp; 
-    .col-xs-12.col-sm-4
+                | &nbsp;
+    .col-xs-12.col-sm-4 
       p.lead= sidebar
